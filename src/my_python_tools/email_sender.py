@@ -30,9 +30,9 @@ def _send_via_brevo(to, subject, body):
     sender_email = os.environ.get("BREVO_SENDER_EMAIL")
 
     if not api_key:
-        raise RuntimeError("BREVO_API_KEY is not set in my-python-tools/.env")
+        raise RuntimeError("BREVO_API_KEY is not set in .env")
     if not sender_email:
-        raise RuntimeError("BREVO_SENDER_EMAIL is not set in my-python-tools/.env")
+        raise RuntimeError("BREVO_SENDER_EMAIL is not set in .env")
 
     response = requests.post(
         _BREVO_API_URL,
@@ -55,9 +55,9 @@ def _send_via_gmail(to, subject, body):
     gmail_password = os.environ.get("GMAIL_APP_PASSWORD")
 
     if not gmail_address:
-        raise RuntimeError("GMAIL_ADDRESS is not set in my-python-tools/.env")
+        raise RuntimeError("GMAIL_ADDRESS is not set in .env")
     if not gmail_password:
-        raise RuntimeError("GMAIL_APP_PASSWORD is not set in my-python-tools/.env")
+        raise RuntimeError("GMAIL_APP_PASSWORD is not set in .env")
 
     message = MIMEText(body, "plain", "utf-8")
     message["From"] = gmail_address
